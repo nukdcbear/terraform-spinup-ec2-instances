@@ -5,9 +5,22 @@ locals {
   }
 }
 
+# -----------------------------------------------------------------------------
+# Venafi cert
+# -----------------------------------------------------------------------------
+resource "venafi_certificate" "domo" {
+  common_name = var.server_FQDN
+}
+
+# -----------------------------------------------------------------------------
+# Cloud Init
+# -----------------------------------------------------------------------------
 data "template_file" "user_data_script" {
   template = file("${path.module}/templates/ec2_user_data.sh.tpl")
   vars     = {
+    hostname = var.server_FQDN
+    machine_cert = venafi_certificate.domo.certificate
+    cert_key = venafi_certificate.domo.private_key_pem
     motd = <<-EOF
   Domo machine
 EOF
@@ -18,6 +31,8 @@ data "template_file" "init" {
   template =  file("${path.module}/templates/ec2_cloud_init.tpl")
   vars     = {
     hostname = var.server_FQDN
+    # machine_cert = venafi_certificate.domo.certificate
+    # cert_key = venafi_certificate.domo.private_key_pem
   }
 }
 
@@ -55,6 +70,9 @@ data "aws_ami" "ubuntu_18" {
   }
 }
 
+# -----------------------------------------------------------------------------
+# EC2 Instance
+# -----------------------------------------------------------------------------
 resource "aws_instance" "domo_machines" {
   ami                         = data.aws_ami.ubuntu_18.id
   instance_type               = "t2.micro"
