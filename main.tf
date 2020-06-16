@@ -57,11 +57,13 @@ data "template_cloudinit_config" "config" {
 # -----------------------------------------------------------------------------
 data "aws_ami" "ubuntu_18" {
   most_recent = true
-  owners      = ["099720109477"]  # Official Canonical https://help.ubuntu.com/community/EC2StartersGuide
+  # owners      = ["099720109477"]  # Official Canonical https://help.ubuntu.com/community/EC2StartersGuide
+  owners      = ["430256340876"]
 
   filter {
     name   = "name"
-    values = ["ubuntu/images/hvm-ssd/ubuntu-bionic-18.04-amd64-server-*"]
+    # values = ["ubuntu/images/hvm-ssd/ubuntu-bionic-18.04-amd64-server-*"]
+    values = ["nginx-ubuntu*"]
   }
 
   filter {
@@ -98,6 +100,13 @@ resource "aws_security_group" "domo" {
   ingress {
     from_port   = 22
     to_port     = 22
+    protocol    = "tcp"
+    cidr_blocks = [var.domo_ingress_cidr_block]  # Specific cidr to limit access
+  }
+
+  ingress {
+    from_port   = 443
+    to_port     = 443
     protocol    = "tcp"
     cidr_blocks = [var.domo_ingress_cidr_block]  # Specific cidr to limit access
   }

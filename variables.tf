@@ -1,3 +1,7 @@
+# variable "ami_id" {
+#   default = "ami-094375c3740af33f3"
+# }
+
 variable "aws_vpc_cidr_block" {
   default = "10.0.0.0/16"
 }
@@ -16,7 +20,7 @@ variable "domo_ingress_cidr_block" {
 
 variable "hostname" {
   description = "Simple name for machine"
-  default     = "domo1"
+  default     = "dev-domo1"
 }
 
 variable "key_pair_name" {
@@ -32,7 +36,7 @@ variable "route53_hosted_zone_name" {
 
 variable "server_FQDN" {
   description = "Server fully qualifed domain name"
-  default     = "domo1.davidcbarringer.com"
+  default     = "dev-domo1.davidcbarringer.com"
 }
 
 variable "owner_team" {
