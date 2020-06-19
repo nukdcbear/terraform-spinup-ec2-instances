@@ -4,7 +4,7 @@ on:
     types: [created]
 jobs:
   slashCommandDispatch:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     steps:
       - name: Execute Terraform
         uses: peter-evans/slash-command-dispatch@v1
