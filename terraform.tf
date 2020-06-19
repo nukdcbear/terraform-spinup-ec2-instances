@@ -4,8 +4,8 @@ terraform {
     aws = "~> 2.62"
   }
   backend "s3" {
-    bucket  = "dcbear-engineering-dev-tfstate"
-    key     = "tfstates/domo-ec2"
+    # bucket  = "dcbear-engineering-dev-tfstate"
+    # key     = "tfstates/domo-ec2"
     region  = "us-east-2"
     encrypt = true
   }
