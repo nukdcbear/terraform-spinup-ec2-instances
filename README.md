@@ -6,7 +6,7 @@
   - [Table of Contents](#table-of-contents)
   - [About <a name = "about"></a>](#about)
   - [Requirements <a name = "requirements"></a>](#requirements)
-  - [System Requirements <a name = "sysrequirements"></a>](#system-requirements)
+  - [System Requirements <a name = "system-requirements"></a>](#system-requirements)
   - [Usage <a name = "usage"></a>](#usage)
 
 ## About <a name = "about"></a>
@@ -21,7 +21,7 @@ This example is using a NGINX Ubuntu based AMI and will interact with Venafi Dev
 - [AWS Account](https://aws.amazon.com/console/)
 - [Venafi DevOpsACCELERATE (cloud) account](https://ui.venafi.cloud/login)
 
-## System Requirements <a name = "sysrequirements"></a>
+## System Requirements <a name = "system-requirements"></a>
 
 This can be executed on either a Windows or Linux system
 
