@@ -10,5 +10,5 @@ jobs:
         uses: peter-evans/slash-command-dispatch@v1
         with:
           token: ${{ secrets.REPO_ACCESS_TOKEN }}
-          commands: deploy-instance
+          commands: terraform-apply, terraform-destroy
           repository: nukdcbear/slash-command-processor
