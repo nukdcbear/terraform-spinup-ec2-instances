@@ -12,3 +12,4 @@ jobs:
           token: ${{ secrets.REPO_ACCESS_TOKEN }}
           commands: terraform-apply, terraform-destroy
           repository: nukdcbear/slash-command-processor
+          named-args: true
