@@ -93,7 +93,7 @@ resource "aws_instance" "domo_machines" {
 }
 
 resource "aws_security_group" "domo" {
-  name        = "domo-vpc"
+  name        = "${var.hostname}-domo-vpc"
   description = "Rules for domo vpc"
   vpc_id      = var.aws_vpc_id
 
