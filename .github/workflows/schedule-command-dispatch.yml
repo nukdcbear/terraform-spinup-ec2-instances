@@ -1,0 +1,15 @@
+name: Scheduled Command Dispatch - CI
+on:
+  schedule:
+    - cron: '0 14 26 6 *'
+jobs:
+  CommandDispatch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Execute Terraform
+        uses: peter-evans/repository-dispatch@v1
+        with:
+          token: ${{ secrets.REPO_ACCESS_TOKEN }}
+          repository: nukdcbear/slash-command-processor
+          event-type: deploy-event
+          client-payload: '{"hostname": "domo93.dev"}'
