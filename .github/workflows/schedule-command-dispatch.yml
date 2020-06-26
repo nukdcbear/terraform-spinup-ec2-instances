@@ -1,7 +1,7 @@
 name: Scheduled Command Dispatch - CI
 on:
   schedule:
-    - cron: '48 18 26 6 *'
+    - cron: '55 18 26 6 *'
 jobs:
   CommandDispatch:
     runs-on: ubuntu-latest
