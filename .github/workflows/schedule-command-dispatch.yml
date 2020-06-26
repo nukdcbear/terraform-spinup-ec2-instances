@@ -1,7 +1,7 @@
 name: Scheduled Command Dispatch - CI
 on:
   schedule:
-    - cron: '5 18 26 6 *'
+    - cron: '37 18 26 6 *'
 jobs:
   CommandDispatch:
     runs-on: ubuntu-latest
@@ -12,4 +12,4 @@ jobs:
           token: ${{ secrets.REPO_ACCESS_TOKEN }}
           repository: nukdcbear/slash-command-processor
           event-type: deploy-event
-          client-payload: '{"hostname": "domo93.dev"}'
+          client-payload: '{"hostname": "domo93.dev"}, "repository": "${{ github.repository }}"'
